@@ -4,7 +4,7 @@
  * After rolling through the openid flow, it'll call back to proxy.php
  * to fetch profile data, and then display profile pic and name.
  * @copyright (c) 2009, Yahoo! Inc. All rights reserved.
- * @package http://github.com/erikeldridge/openid_oauth_hybrid_sample
+ * @package http://github.com/erikeldridge/openid_oauth_hybrid_app
  * @license code licensed under the BSD License.  See /license.markdown
  */ 
  -->

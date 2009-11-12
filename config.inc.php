@@ -3,7 +3,7 @@
 /**
  * This is pretty self-explanatory.  the oauth app used needs scoping for profile data.
  * @copyright (c) 2009, Yahoo! Inc. All rights reserved.
- * @package http://github.com/erikeldridge/openid_oauth_hybrid_sample
+ * @package http://github.com/erikeldridge/openid_oauth_hybrid_app
  * @license code licensed under the BSD License.  See /license.markdown
  */
  
@@ -12,7 +12,7 @@ define('YAHOO_OAUTH_APP_SECRET', '');
 define('YAHOO_OAUTH_APP_ID', '');
 
 define('OPENID_REALM_URI', 'http://example.com');
-define('OPENID_RETURN_TO_URI', 'http://example.com/openid_oauth_hybrid_sample/openid/return_to.php');
+define('OPENID_RETURN_TO_URI', 'http://example.com/openid_oauth_hybrid_app/openid/return_to.php');
 
 //include paths for libs
 define('OPENID_INCLUDE_PATH', '/path/to/openid');

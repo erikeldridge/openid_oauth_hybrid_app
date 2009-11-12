@@ -3,7 +3,7 @@
 /**
  * This script generates the openid auth url and redirects to it.
  * @copyright (c) 2009, Yahoo! Inc. All rights reserved.
- * @package http://github.com/erikeldridge/openid_oauth_hybrid_sample
+ * @package http://github.com/erikeldridge/openid_oauth_hybrid_app
  * @license code licensed under the BSD License.  See /license.markdown
  */
  

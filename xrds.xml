@@ -1,7 +1,7 @@
 <!-- 
 /**
  * @copyright (c) 2009, Yahoo! Inc. All rights reserved.
- * @package http://github.com/erikeldridge/openid_oauth_hybrid_sample
+ * @package http://github.com/erikeldridge/openid_oauth_hybrid_app
  * @license code licensed under the BSD License.  See /license.markdown
  */
  -->
@@ -13,7 +13,7 @@
 		<!-- OpenID Consumer Service -->
 		<Service priority="10">
 			<Type>http://specs.openid.net/auth/2.0/return_to</Type>
-			<URI>http://example.com/openid_oauth_hybrid_sample/openid/return_to.php</URI>
+			<URI>http://example.com/openid_oauth_hybrid_app/openid/return_to.php</URI>
 		</Service>
 	</XRD>
 </xrds:XRDS>

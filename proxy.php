@@ -3,7 +3,7 @@
  * This is a proxy script for making 3-leg requests using php sdk.  
  * Currently, it is hardcoded to request the profile info only.
  * @copyright (c) 2009, Yahoo! Inc. All rights reserved.
- * @package http://github.com/erikeldridge/openid_oauth_hybrid_sample
+ * @package http://github.com/erikeldridge/openid_oauth_hybrid_app
  * @license code licensed under the BSD License.  See /license.markdown
  */
  
