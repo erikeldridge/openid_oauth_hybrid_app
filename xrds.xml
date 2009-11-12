@@ -1,0 +1,19 @@
+<!-- 
+/**
+ * @copyright (c) 2009, Yahoo! Inc. All rights reserved.
+ * @package http://github.com/erikeldridge/openid_oauth_hybrid_sample
+ * @license code licensed under the BSD License.  See /license.markdown
+ */
+ -->
+<?xml version="1.0" encoding="UTF-8" ?>
+<xrds:XRDS xmlns:xrds="xri://$xrds" xmlns="xri://$xrd*($v*2.0)" xmlns:simple="http://xrds-simple.net/core/1.0" xmlns:openid="http://openid.net/xmlns/1.0">
+	<XRD xml:id="main" version="2.0">
+		<Type>xri://$xrds*simple</Type>
+
+		<!-- OpenID Consumer Service -->
+		<Service priority="10">
+			<Type>http://specs.openid.net/auth/2.0/return_to</Type>
+			<URI>http://example.com/openid_oauth_hybrid_sample/openid/return_to.php</URI>
+		</Service>
+	</XRD>
+</xrds:XRDS>
