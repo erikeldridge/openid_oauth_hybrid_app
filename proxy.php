@@ -2,45 +2,38 @@
 /**
  * This is a proxy script for making 3-leg requests using php sdk.  
  * Currently, it is hardcoded to request the profile info only.
- * @copyright (c) 2009, Yahoo! Inc. All rights reserved.
- * @package http://github.com/erikeldridge/openid_oauth_hybrid_app
- * @license code licensed under the BSD License.  See /license.markdown
  */
  
-//fetch session init'd by /openid/return_to.php script.
-//note: we use server-side instead of cookie storage cause /index.php never refreshes.
-session_id($_GET['sessionId']);
-session_start();
-
 require_once 'config.inc.php';
+require_once '../yosdk/OAuth.php';
 
-//ammend include path so we can include files consistently
-$includePath = get_include_path().PATH_SEPARATOR
-    .OPENID_INCLUDE_PATH.PATH_SEPARATOR
-    .OAUTH_INCLUDE_PATH.PATH_SEPARATOR;
-set_include_path($includePath);
+$consumer = new OAuthConsumer(YAHOO_OAUTH_APP_KEY, YAHOO_OAUTH_APP_SECRET);
 
-require_once 'Yahoo.inc';
+//extract request token from storage
+$accessToken = json_decode(file_get_contents('accessToken.txt'));
 
-//safely fetch input
-$filters = array(
-    'openidHash' => FILTER_SANITIZE_ENCODED
-);
-$input = filter_var_array($_REQUEST, $filters);
-
-$store = new NativeSessionStore();
-
-//init Y! session for easy data fetch & oauth token mgmt
-$yahooSession = YahooSession::requireSession(
-    YAHOO_OAUTH_APP_KEY, 
-    YAHOO_OAUTH_APP_SECRET, 
-    YAHOO_OAUTH_APP_ID,
-    YAHOO_OAUTH_APP_CALLBACK_URI, 
-    $store
+//prep request for access token
+$url = 'http://query.yahooapis.com/v1/yql';
+$params = array('q'=>'select * from social.profile where guid=me');
+$request = OAuthRequest::from_consumer_and_token($consumer, $accessToken, 'GET', $url, $params);
+$request->sign_request(new OAuthSignatureMethod_HMAC_SHA1(), $consumer, $accessToken);
+$headers = array(
+	"Accept: application/json"
 );
 
+//make request
+$ch = curl_init($request->to_url());
+$options = array(
+	CURLOPT_HTTPHEADER => $headers,
+	CURLOPT_RETURNTRANSFER => true
+);
+curl_setopt_array($ch, $options);
+$response = curl_exec($ch);
+curl_close($ch);
+
+//error-tip: if request is rejected, refresh access token and re-request
+
+//output
 header('Content-type: application/json');
-
-//we can get name from sreg, but we need the pic too, so fetch everything
-echo json_encode($yahooSession->query('select * from social.profile where guid=me'));
+echo $response;
 ?>
