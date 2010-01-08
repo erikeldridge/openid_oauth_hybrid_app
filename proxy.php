@@ -10,7 +10,7 @@ require_once '../yosdk/OAuth.php';
 $consumer = new OAuthConsumer(YAHOO_OAUTH_APP_KEY, YAHOO_OAUTH_APP_SECRET);
 
 //extract request token from storage
-$accessToken = json_decode(file_get_contents('accessToken.txt'));
+$accessToken = json_decode(file_get_contents('token.txt'));
 
 //prep request for access token
 $url = 'http://query.yahooapis.com/v1/yql';
