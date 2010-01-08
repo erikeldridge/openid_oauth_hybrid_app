@@ -84,7 +84,7 @@ if(isset($input['openid_oauth_request_token'])){
 	    $accessToken->handleExpires = -1;
 	}
     
-	file_put_contents('../token.txt', json_encode($accessToken));
+	file_put_contents('../accessToken.txt', json_encode($accessToken));
 }
 
 ?>
