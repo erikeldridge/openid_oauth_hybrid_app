@@ -10,9 +10,13 @@ require('../../yosdk/OAuth.php');
 
 //safely fetch input
 $filters = array(
-    'openid_sreg_nickname' => FILTER_SANITIZE_ENCODED,
-    'openid_sreg_fullname' => FILTER_SANITIZE_ENCODED,
-    'openid_sreg_email' => FILTER_SANITIZE_ENCODED,
+    
+    //openid ax data
+    'openid_ax_value_image' => FILTER_SANITIZE_ENCODED,
+    'openid_ax_value_fullname' => FILTER_SANITIZE_ENCODED,
+    'openid_ax_value_gender' => FILTER_SANITIZE_ENCODED,
+    'openid_ax_value_email' => FILTER_SANITIZE_ENCODED,
+    
     'openid_identity' => FILTER_SANITIZE_ENCODED,
     'openid_oauth_request_token' => FILTER_SANITIZE_ENCODED
 );
@@ -62,6 +66,12 @@ if(isset($input['openid_oauth_request_token'])){
 	$accessToken->secret = $response["oauth_token_secret"];
 	$accessToken->guid = $response["xoauth_yahoo_guid"];
 	
+	//stash openid ax data in here too after decoding it
+	$accessToken->openid_ax = array_map(
+	    'urldecode', 
+	    array_slice($input, 0, 4, true)
+	);
+	
 	//note: consumer is the app key not consumer obj
 	$accessToken->consumer = YAHOO_OAUTH_APP_KEY;
 	
@@ -84,6 +94,7 @@ if(isset($input['openid_oauth_request_token'])){
 	    $accessToken->handleExpires = -1;
 	}
     
+    //for the sake of a simple example, store in local file
 	file_put_contents('../accessToken.txt', json_encode($accessToken));
 }
 

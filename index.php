@@ -47,7 +47,7 @@ YUI().use('node', 'event', 'io', 'json', 'cookie', function (Y) {
                 });
                 
             } catch (e) {
-                console.log(e);
+                Y.log(e);
             }
         },
         handleClick = function (e) {
@@ -59,7 +59,7 @@ YUI().use('node', 'event', 'io', 'json', 'cookie', function (Y) {
                 popupCheckInterval = null,
     
                 //Def. fn to catch openid when auth is complete, or handle failure.
-                checkPopup = function () {console.log('foo');
+                checkPopup = function () {
                     
                     //If openid is defined, auth is complete, so ...
             		if (popup.session) {
