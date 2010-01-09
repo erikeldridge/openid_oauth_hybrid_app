@@ -1,13 +1,13 @@
 # Hybrid Auth (OpenID + OAuth) application
 
-This app demonstrates a site can log in users, and fetch their Yahoo! profile data, with OpenID + OAuth hybrid auth.  User's are also able to simply authenticate using OAuth.  The end result for either action is that the user's name and profile image are displayed.  The app serves as a way to compare the OAuth and Hybrid auth implementations.
+This app demonstrates a site can log in users, and fetch their Yahoo! profile data, with OpenID (incl. Attribute Exchange) + OAuth _hybrid auth_.  User's are also able to simply authoriza access to data using using OAuth.  The end result for either action is that the user's name and profile image are displayed.  The app serves as a way to compare the OAuth and Hybrid auth implementations.
 
 # Prerequisites
 
    * PHP 5.2
-   * The OpenID PHP library
-   * The OAuth PHP library
-   * A Yahoo! OAuth application
+   * The [OpenID PHP library](http://openidenabled.com/php-openid/)
+   * The [OAuth PHP library](http://github.com/yahoo/yos-social-php/blob/master/lib/OAuth.php) included in the Yahoo! PHP SDK
+   * A [Yahoo! OAuth application](http://developer.yahoo.com/oauth/)
    
 # Usage
 
@@ -18,6 +18,11 @@ This app demonstrates a site can log in users, and fetch their Yahoo! profile da
    - OR -  
    click the _auth w/ oauth_ link to initiate the OAuth flow
    1. Once logged in, click the _logout_link to log out
+   
+# Resources
+
+   * [OpenID Attribute Exchange (AX) spec](http://openid.net/specs/openid-attribute-exchange-1_0.html)
+   * [YDN blog post](http://developer.yahoo.net/blog/archives/2009/12/yahoo_openid_now_with_attribute_exchange.html) describing Yahoo!'s AX support
    
 # License
 
